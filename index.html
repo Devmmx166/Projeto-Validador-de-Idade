@@ -5,26 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script async src="js/logica.js"></script>
-    <title>Hora Atual</title>
+    <script src="js/logica.js"></script>
+    <title>Verificar Idade</title>
 </head>
 
-<body onload="carregar()">
+<body>
     <header>
-        <h1>Hora do Dia</h1>
+        <h1>Verificar Idade</h1>
     </header>
     <section>
         <div id="msg">
-            <h2>Aquei vai aparecer a menssagem</h2>
 
+         
+            <p>
+                <h2>Ano de nascimento</h2>
+                <div class="inputTxt"><label for="inputTxt">Data:</label><input type="text" name="inputTxt" id="fAno" min="0"></div>
+
+                <label for="masc">Masculino:
+                </label> <input name="radSex" type="radio" id="masc">             
+          
+                <label for="fem">Feminino: </label>
+                 <input name="radSex" type="radio" id="fem">              
+            
+            </p>
+            <p>
+                <input id="btn" type="button" value="verificar" onclick="validar()">
+            </p>
+         </div>
+        <div id="res">
+            <p>Resultado</p>
+       
         </div>
-        <p class="saudacao"> bom dia</p>
-        <div id="foto">
-            <img id="imagem" src="img/manha.png" alt="Fodo do amanhecer">
-        </div>
+   
+    
+    
     </section>
     <footer>
-        &copy; Salvador tech
+        <p>&copy; Salvador tech</p>
     </footer>
 
 </body>

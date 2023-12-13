@@ -1,39 +1,67 @@
 
-/// carregamos os dados da função altomaticamente usando a função no html
-//onload="função " principal do js
+function validar(){
+let data = new Date()
+let ano = data.getFullYear()
+let fAno = document.getElementById('fAno')
+let res = document.querySelector('div#res')
 
-function carregar(){
+let img = document.createElement('img') //cria uma tag no html
 
-let msg = document.getElementById('msg');// cacessando a tag no js
-let img = document.querySelector("#imagem")
-let data = new Date()// função que chama a hora do sistema e data
-let hora = data.getHours()// seleção de dado especifico
-let saudacao = document.querySelector('.saudacao')
+img.setAttribute('id', 'foto')//cria um elemento da tag, usando a ',' 'identificador' para identificar
 
-msg.innerHTML = `Agora são ${hora} horas`
-if(hora >= 0 && hora < 12){
-    //Bom dia
-img.src = "img/manha.png"
-document.body.style.background = 'rgb(240, 231, 231)'
-saudacao.innerText = 'Bom Dia'
-saudacao.style.textAlign='center'
+
+fAno = Number(fAno.value)
+
+if(fAno.length == 0 || fAno > ano){
+    window.alert('[ERRO] Verifique os dados e tente novamente')
+}else{
+   let radSex = document.getElementsByName('radSex')
+   let idade = ano - fAno;
+   genero = ''; 
+
+   if(radSex[0].checked){
+    genero = 'Masculino';
+    if(idade >= 0 && idade <= 10){
+        img.setAttribute('src', 'img/homem/bebe-menino.png')
+
+        //criança
+    }
+    else if(idade >10 && idade <= 17){
+        //adolecente
+     img.setAttribute('src', 'img/homem/adolecente.png')   
+    }
+    else if(idade >=18 && idade <= 59){
+        img.setAttribute('src', 'img/homem/homem-adulto-55-anos.png')
+        //adulto
+    }
+    else{
+        //idoso
+        img.setAttribute('src', 'img/homem/homem-adulto-65-anos.png')
+    }
+}else{
+    genero = 'Feminino'
+    if(idade >= 0 && idade <= 10){
+        img.setAttribute('src', 'img/mulher/bebe-menina.png')
+
+        //criança
+    }
+    else if(idade >10 && idade <= 17){
+        //adolecente
+     img.setAttribute('src', 'img/mulher/menina.png')   
+    }
+    else if(idade >=18 && idade <= 59){
+        img.setAttribute('src', 'img/mulher/mulher-adulta-55-anos.png')
+        //adulto
+    }
+    else{
+        //idoso
+        img.setAttribute('src', 'img/mulher/mulher-adulta-65-anos.png')
+    }
 }
-else if(hora >=12 && hora <= 18){
-    //boa tarde
-    img.src = "img/tarde.png"
-    document.body.style.background = ' rgb(230, 177, 159)'
-    saudacao.innerText = 'Boa Tarde'
-    saudacao.style.textAlign='center'
-}
-else{
-    //boa boite
-    img.src = "img/noite.png";
-    document.body.style.background = ' rgb(54, 64, 119)'
-    saudacao.innerText = 'Boa Noite'
-    saudacao.style.textAlign='center'
-    
-}
 
 
+res.innerHTML = `Pessoa do sexo ${genero} com ${idade} anos.`
+res.appendChild(img)
 }
 
+}
